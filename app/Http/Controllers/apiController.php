@@ -13,6 +13,27 @@ use App\Models\Skills;
 use App\Models\Candidates;
 use App\Models\SkillSets;
 
+
+/**
+* @OA\Info(
+*      version="1.0.0",
+*      title="Dokumentasi API",
+*      description="Lorem Ipsum",
+*      @OA\Contact(
+*          email="hi.wasissubekti02@gmail.com"
+*      ),
+*      @OA\License(
+*          name="Apache 2.0",
+*          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+*      )
+* )
+*
+* @OA\Server(
+*      url=L5_SWAGGER_CONST_HOST,
+*      description="Demo API Server"
+* )
+*/
+
 class apiController extends Controller{
     private function setReturn($success,$message,$data,$error){
         $data_return = [
@@ -44,6 +65,31 @@ class apiController extends Controller{
         return view('index', compact('jobs', 'skills'));
     }
 
+
+     /**
+    *    @OA\Post(
+    *       path="/kategori-berita",
+    *       tags={"Berita"},
+    *       operationId="kategoriBerita",
+    *       summary="Kategori Berita",
+    *       description="Mengambil Data Kategori Berita",
+    *       @OA\Response(
+    *           response="200",
+    *           description="Ok",
+    *           @OA\JsonContent
+    *           (example={
+    *               "success": true,
+    *               "message": "Berhasil mengambil Kategori Berita",
+    *               "data": {
+    *                   {
+    *                   "id": "1",
+    *                   "nama_kategori": "Pendidikan",
+    *                  }
+    *              }
+    *          }),
+    *      ),
+    *  )
+    */
     public function saveCandidate(Request $request){
         $validated = Validator::make($request->all(), [
             'full_name' => 'required',
