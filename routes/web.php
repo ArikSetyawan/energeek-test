@@ -21,5 +21,5 @@ use App\Http\Controllers\apiController;
 //?  ------------------------   API Lamar Kerja   ------------------------ !!
 Route::group([],function () {
     Route::get('/', [apiController::class, 'Index']);
-    // Route::get('/Absensi/PenilaianAbsensi/search', [PenilaianAbsensiController::class, 'SearchPenilaianAbsensi']);
+    Route::post('/api/v1/new-candidate', [apiController::class, 'saveCandidate']);
 });

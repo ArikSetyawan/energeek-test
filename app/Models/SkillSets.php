@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Wildside\Userstamps\Userstamps;
 
-class Skills extends Model {
-    use Userstamps;
+class SkillSets extends Model
+{
     use HasFactory;
-    protected $table = 'skills';
+    protected $table = 'skill_sets';
     protected $guarded = [];
-    public $timestamps = true;
+    public $timestamps = false;
 }
