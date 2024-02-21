@@ -22,4 +22,5 @@ use App\Http\Controllers\apiController;
 Route::group([],function () {
     Route::get('/', [apiController::class, 'Index']);
     Route::post('/api/v1/new-candidate', [apiController::class, 'saveCandidate']);
+    Route::get('/api/v1/get-candidates', [apiController::class, 'getCandidates']);
 });

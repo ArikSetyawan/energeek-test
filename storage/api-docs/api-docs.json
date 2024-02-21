@@ -1,0 +1,214 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentasi API",
+        "description": "API Documentation for Job Applyment.",
+        "contact": {
+            "email": "setyawanarik@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/api/v1/new-candidate": {
+            "post": {
+                "tags": [
+                    "Candidate"
+                ],
+                "summary": "New Candidate",
+                "description": "Candidate apply for a job",
+                "operationId": "newCandidate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "full_name": {
+                                        "type": "string",
+                                        "example": "test_user"
+                                    },
+                                    "position": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "085723339090"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "testuser@energeek.com"
+                                    },
+                                    "birth_year": {
+                                        "type": "integer",
+                                        "example": 2000
+                                    },
+                                    "skills": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        },
+                                        "example": [
+                                            1,
+                                            2,
+                                            3
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "message": "success",
+                                    "data": {
+                                        "job_id": 1,
+                                        "name": "test_user",
+                                        "email": "testuser@energeek.com",
+                                        "phone": "085723339090",
+                                        "year": 2000,
+                                        "created_by": null,
+                                        "updated_by": null,
+                                        "updated_at": "2024-02-21T13:20:39.000000Z",
+                                        "created_at": "2024-02-21T13:20:39.000000Z",
+                                        "id": 1
+                                    },
+                                    "error": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "message": "fail",
+                                    "data": null,
+                                    "error": {
+                                        "email": [
+                                            "Email atau Nomor Telpon yang anda masukkan sudah pernah melamar dijabatan tersebut, silahkan memilih jabatan yang lain."
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/get-candidates": {
+            "get": {
+                "tags": [
+                    "Candidate"
+                ],
+                "summary": "Get Candidates",
+                "description": "Get all candidates or by specific parameter",
+                "operationId": "getCandidates",
+                "parameters": [
+                    {
+                        "name": "candidate_id",
+                        "in": "query",
+                        "description": "Candidate ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "job_id",
+                        "in": "query",
+                        "description": "Job ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "message": "success",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "name": "test_user",
+                                            "email": "testuser@energeek.com",
+                                            "phone": "085723339090",
+                                            "birth_year": 2000,
+                                            "job": {
+                                                "id": 1,
+                                                "name": "Frontend Web Programmer"
+                                            },
+                                            "skills": [
+                                                {
+                                                    "id": 1,
+                                                    "name": "PHP"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 2,
+                                            "name": "Arik Bagus Setyawan",
+                                            "email": "setyawanarik@gmail.com",
+                                            "phone": "085746115951",
+                                            "birth_year": 2000,
+                                            "job": {
+                                                "id": 1,
+                                                "name": "Frontend Web Programmer"
+                                            },
+                                            "skills": [
+                                                {
+                                                    "id": 1,
+                                                    "name": "PHP"
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "name": "PostgreSQL"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "name": "API (JSON,REST)"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "name": "Version Control System (Github, Gitlab)"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "error": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
