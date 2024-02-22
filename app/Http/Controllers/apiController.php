@@ -267,7 +267,7 @@ class apiController extends Controller{
     *                       "id": 2,
     *                       "name": "Arik Bagus Setyawan",
     *                       "email": "setyawanarik@gmail.com",
-    *                       "phone": "085746115951",
+    *                       "phone": "085723339303",
     *                       "birth_year": 2000,
     *                       "job": {
     *                           "id": 1,
